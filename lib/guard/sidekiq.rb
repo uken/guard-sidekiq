@@ -1,5 +1,6 @@
 require 'guard'
 require 'guard/guard'
+require 'timeout'
 
 module Guard
   class Sidekiq < Guard
@@ -28,10 +29,10 @@ module Guard
     def start
       stop
       UI.info 'Starting up sidekiq...'
-      UI.info [ cmd, env.map{|v| v.join('=')} ].join(' ')
+      UI.info cmd
 
       # launch Sidekiq worker
-      @pid = spawn(env, cmd)
+      @pid = spawn({}, cmd)
     end
 
     def stop
@@ -67,7 +68,7 @@ module Guard
     end
 
     # Called on file(s) modifications
-    def run_on_change(paths)
+    def run_on_changes(paths)
       restart
     end
 
