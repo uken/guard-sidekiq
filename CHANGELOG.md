@@ -1,3 +1,11 @@
+## 0.0.6
+
+ * Fix default queue
+
+## 0.0.4 - 0.0.5
+
+ * Fix typos and errors related to find/replace of resque with sidekiq
+
 ## 0.0.3
 
  * Forked from guard-delayed and guard-resque
