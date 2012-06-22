@@ -6,12 +6,11 @@ module Guard
   class Sidekiq < Guard
 
     DEFAULT_SIGNAL = :QUIT
-    DEFAULT_QUEUE = '*'.freeze
     DEFAULT_CONCURRENCY = 1
 
     # Allowable options are:
     #  - :environment  e.g. 'test'
-    #  - :queue e.g. '*'
+    #  - :queue e.g. 'default'
     #  - :timeout e.g. 5
     #  - :concurrency, e.g. 20
     #  - :verbose e.g. true
@@ -20,7 +19,6 @@ module Guard
       @options = options
       @pid = nil
       @stop_signal = options[:stop_signal] || DEFAULT_SIGNAL
-      @options[:queue] ||= DEFAULT_QUEUE
       @options[:concurrency] ||= DEFAULT_CONCURRENCY
       @options[:verbose] = @options.fetch(:verbose, true)
       super
@@ -83,8 +81,8 @@ module Guard
       command = ['bundle exec sidekiq']
 
       # trace setting
-      command << "--queue #{@options[:queue]}"
-      command << "--verbose" if @options[:verbose]
+      command << "--queue #{@options[:queue]}"              if @options[:queue]
+      command << "--verbose"                                if @options[:verbose]
       command << "--environment #{@options[:environment]}"  if @options[:environment]
       command << "--timeout #{@options[:timeout]}"          if @options[:timeout]
       command << "--concurrency #{@options[:concurrency]}"

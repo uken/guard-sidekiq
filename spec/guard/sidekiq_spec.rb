@@ -38,7 +38,6 @@ describe Guard::Sidekiq do
 
     it 'should provide default options' do
       obj = Guard::Sidekiq.new []
-      obj.send(:cmd).should include "--queue #{Guard::Sidekiq::DEFAULT_QUEUE}"
       obj.send(:cmd).should include "--concurrency #{Guard::Sidekiq::DEFAULT_CONCURRENCY}"
       obj.send(:cmd).should include '--verbose'
     end

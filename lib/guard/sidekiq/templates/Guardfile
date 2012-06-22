@@ -1,7 +1,7 @@
 ### Guard::Sidekiq
 #  available options:
 #  - :verbose
-#  - :queue (defaults to "*")
+#  - :queue (defaults to "default")
 #  - :concurrency (defaults to 1)
 #  - :timeout
 #  - :environment (corresponds to RAILS_ENV for the Sidekiq worker)
