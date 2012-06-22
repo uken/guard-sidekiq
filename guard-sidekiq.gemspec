@@ -4,7 +4,7 @@ require "guard/sidekiq/version"
 
 Gem::Specification.new do |s|
   s.name        = "guard-sidekiq"
-  s.version     = Guard::Sidekiq::Version::STRING
+  s.version     = Guard::SidekiqVersion::STRING
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Mark Bolusmjak", "pitr"]
   s.email       = ["team@uken.com"]
