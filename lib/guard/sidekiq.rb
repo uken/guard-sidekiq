@@ -12,6 +12,7 @@ module Guard
     #  - :environment  e.g. 'test'
     #  - :queue e.g. 'default'
     #  - :timeout e.g. 5
+    #  - :config e.g. config/sidekiq.yml
     #  - :concurrency, e.g. 20
     #  - :verbose e.g. true
     #  - :stop_signal e.g. :QUIT or :SIGQUIT
@@ -82,6 +83,7 @@ module Guard
 
       # trace setting
       command << "--queue #{@options[:queue]}"              if @options[:queue]
+      command << "-C #{@options[:config]}"                  if @options[:config]
       command << "--verbose"                                if @options[:verbose]
       command << "--environment #{@options[:environment]}"  if @options[:environment]
       command << "--timeout #{@options[:timeout]}"          if @options[:timeout]
