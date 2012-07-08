@@ -31,6 +31,14 @@ describe Guard::Sidekiq do
       obj.send(:cmd).should include "--concurrency #{concurrency}"
     end
 
+    it 'should accept :config option' do
+      config = 'sidekiq.yml'
+
+      obj = Guard::Sidekiq.new [], :config => config
+      obj.send(:cmd).should include "-C #{config}"
+    end
+
+
     it 'should accept :verbose option' do
       obj = Guard::Sidekiq.new [], :verbose => true
       obj.send(:cmd).should include '--verbose'
