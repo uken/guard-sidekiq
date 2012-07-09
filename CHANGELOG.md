@@ -1,3 +1,7 @@
+## 0.0.7
+
+ * Add option for specifying a config file.
+
 ## 0.0.6
 
  * Fix default queue
