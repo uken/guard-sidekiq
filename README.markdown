@@ -42,7 +42,7 @@ You can customize the sidekiq task via the following options:
 * `timeout`: shutdown timeout
 * `concurrency`: the number of threads to include (defaults to `1`)
 * `verbose`: whether to use verbose logging (defaults to `nil`)
-* `stop_signal`: how to kill the process when restarting (defaults to `QUIT`)
+* `stop_signal`: how to kill the process when restarting (defaults to `TERM`)
 
 
 ## Development
