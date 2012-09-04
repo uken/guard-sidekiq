@@ -5,7 +5,7 @@ require 'timeout'
 module Guard
   class Sidekiq < Guard
 
-    DEFAULT_SIGNAL = :QUIT
+    DEFAULT_SIGNAL = :TERM
     DEFAULT_CONCURRENCY = 1
 
     # Allowable options are:
@@ -15,7 +15,7 @@ module Guard
     #  - :config e.g. config/sidekiq.yml
     #  - :concurrency, e.g. 20
     #  - :verbose e.g. true
-    #  - :stop_signal e.g. :QUIT or :SIGQUIT
+    #  - :stop_signal e.g. :TERM, :QUIT or :SIGQUIT
     def initialize(watchers = [], options = {})
       @options = options
       @pid = nil
