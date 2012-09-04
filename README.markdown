@@ -1,5 +1,7 @@
 # Guard::Sidekiq
 
+[![Build Status](https://secure.travis-ci.org/uken/guard-sidekiq.png)](http://travis-ci.org/uken/guard-sidekiq)
+
 Guard::Sidekiq automatically starts/stops/restarts Sidekiq workers
 
 *forked from [Guard::Resque](https://github.com/guard/guard-resque)*
