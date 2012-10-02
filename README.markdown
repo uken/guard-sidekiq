@@ -45,6 +45,7 @@ You can customize the sidekiq task via the following options:
 * `concurrency`: the number of threads to include (defaults to `1`)
 * `verbose`: whether to use verbose logging (defaults to `nil`)
 * `stop_signal`: how to kill the process when restarting (defaults to `TERM`)
+* `require`: location of rails application with workers or file to require (defaults to `nil`)
 
 
 ## Development

@@ -44,6 +44,11 @@ describe Guard::Sidekiq do
       obj.send(:cmd).should include '--verbose'
     end
 
+    it 'should accept :require option' do
+      obj = Guard::Sidekiq.new [], :require => './sidekiq_helper.rb'
+      obj.send(:cmd).should include '--require ./sidekiq_helper.rb'
+    end
+
     it 'should provide default options' do
       obj = Guard::Sidekiq.new []
       obj.send(:cmd).should include "--concurrency #{Guard::Sidekiq::DEFAULT_CONCURRENCY}"
