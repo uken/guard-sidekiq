@@ -1,3 +1,11 @@
+## 0.0.9
+
+ * Add `require` option.
+
+## 0.0.8
+
+ * Change default stop signal to be TERM.
+
 ## 0.0.7
 
  * Add option for specifying a config file.
