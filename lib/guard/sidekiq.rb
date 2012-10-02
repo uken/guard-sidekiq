@@ -16,6 +16,7 @@ module Guard
     #  - :concurrency, e.g. 20
     #  - :verbose e.g. true
     #  - :stop_signal e.g. :TERM, :QUIT or :SIGQUIT
+    #  - :require e.g. ./sidekiq_helper.rb
     def initialize(watchers = [], options = {})
       @options = options
       @pid = nil
@@ -87,6 +88,7 @@ module Guard
       command << "--verbose"                                if @options[:verbose]
       command << "--environment #{@options[:environment]}"  if @options[:environment]
       command << "--timeout #{@options[:timeout]}"          if @options[:timeout]
+      command << "--require #{@options[:require]}"          if @options[:require]
       command << "--concurrency #{@options[:concurrency]}"
 
       command.join(' ')
