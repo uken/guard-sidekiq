@@ -16,6 +16,7 @@ module Guard
     #  - :concurrency, e.g. 20
     #  - :verbose e.g. true
     #  - :stop_signal e.g. :TERM, :QUIT or :SIGQUIT
+    #  - :logfile e.g. log/sidekiq.log (defaults to STDOUT)
     #  - :require e.g. ./sidekiq_helper.rb
     def initialize(watchers = [], options = {})
       @options = options
@@ -87,7 +88,8 @@ module Guard
 
     def cmd
       command = ['bundle exec sidekiq']
-      # trace setting
+
+      command << "--logfile #{@options[:logfile]}"          if @options[:logfile]
       command << queue_params                               if @options[:queue]
       command << "-C #{@options[:config]}"                  if @options[:config]
       command << "--verbose"                                if @options[:verbose]

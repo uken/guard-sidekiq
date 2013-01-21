@@ -1,3 +1,7 @@
+## 0.0.11
+
+* Can now specify a `:logfile` option.
+
 ## 0.0.10
 
 * Added ability to specify an array of `:queue`
