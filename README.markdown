@@ -40,7 +40,7 @@ being active.
 You can customize the sidekiq task via the following options:
 
 * `environment`: the rails environment to run the workers in (defaults to `nil`)
-* `queue`: the sidekiq queue to run (defaults to `default`)
+* `queue`: the sidekiq queue to run (defaults to `default`). Can supply a list of queues here.
 * `timeout`: shutdown timeout
 * `concurrency`: the number of threads to include (defaults to `1`)
 * `verbose`: whether to use verbose logging (defaults to `nil`)
