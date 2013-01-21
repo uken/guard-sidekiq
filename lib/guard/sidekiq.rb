@@ -87,8 +87,6 @@ module Guard
 
     def cmd
       command = ['bundle exec sidekiq']
-
-
       # trace setting
       command << queue_params                               if @options[:queue]
       command << "-C #{@options[:config]}"                  if @options[:config]
