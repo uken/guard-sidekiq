@@ -10,11 +10,20 @@ describe Guard::Sidekiq do
       obj.send(:cmd).should include "--environment #{environment}"
     end
 
-    it 'should accept :queue option' do
-      queue = :foo
+    describe 'with :queue option' do
+      it 'should accept one queue' do
+        queue = :foo
 
-      obj = Guard::Sidekiq.new [], :queue => queue
-      obj.send(:cmd).should include "--queue #{queue}"
+        obj = Guard::Sidekiq.new [], :queue => queue
+        obj.send(:cmd).should include "--queue #{queue}"
+      end
+
+      it 'should accept array of :queue options' do
+        queue = ['foo,4', 'default']
+
+        obj = Guard::Sidekiq.new [], :queue => queue
+        obj.send(:cmd).should include "--queue #{queue.first} --queue #{queue.last}"
+      end
     end
 
     it 'should accept :timeout option' do

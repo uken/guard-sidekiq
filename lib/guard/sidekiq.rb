@@ -79,11 +79,18 @@ module Guard
 
     private
 
+    def queue_params
+      params = @options[:queue]
+      params = [params] unless params.is_a? Array
+      params.collect {|param| "--queue #{param}"}.join(" ")
+    end
+
     def cmd
       command = ['bundle exec sidekiq']
 
+
       # trace setting
-      command << "--queue #{@options[:queue]}"              if @options[:queue]
+      command << queue_params                               if @options[:queue]
       command << "-C #{@options[:config]}"                  if @options[:config]
       command << "--verbose"                                if @options[:verbose]
       command << "--environment #{@options[:environment]}"  if @options[:environment]
