@@ -40,7 +40,8 @@ being active.
 You can customize the sidekiq task via the following options:
 
 * `environment`: the rails environment to run the workers in (defaults to `nil`)
-* `queue`: the sidekiq queue to run (defaults to `default`)
+* `queue`: the sidekiq queue to run (defaults to `default`). Can supply a list of queues here.
+* `logfile`: sidekiq defaults to logging to STDOUT. Can specify a file to log to instead.
 * `timeout`: shutdown timeout
 * `concurrency`: the number of threads to include (defaults to `1`)
 * `verbose`: whether to use verbose logging (defaults to `nil`)
@@ -89,5 +90,6 @@ I hacked this together from the `guard-delayed` gem for use with Resque. All cre
 ## Guard::Sidekiq Authors
 Mark Bolusmjak
 Pitr Vernigorov
+[David Parry](https://github.com/suranyami)
 
 Replaces "rescue" with "sidekiq"

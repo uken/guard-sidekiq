@@ -3,18 +3,33 @@ require 'spec_helper'
 describe Guard::Sidekiq do
   describe 'start' do
 
-    it 'should accept :environment option' do
+    it 'accepts :environment option' do
       environment = :foo
 
       obj = Guard::Sidekiq.new [], :environment => environment
       obj.send(:cmd).should include "--environment #{environment}"
     end
 
-    it 'should accept :queue option' do
-      queue = :foo
+    it 'accepts :logfile option' do
+      logfile = 'log/sidekiq.log'
+      obj = Guard::Sidekiq.new [], :logfile => logfile
+      obj.send(:cmd).should include "--logfile #{logfile}"
+    end
 
-      obj = Guard::Sidekiq.new [], :queue => queue
-      obj.send(:cmd).should include "--queue #{queue}"
+    describe 'with :queue option' do
+      it 'accepts one queue' do
+        queue = :foo
+
+        obj = Guard::Sidekiq.new [], :queue => queue
+        obj.send(:cmd).should include "--queue #{queue}"
+      end
+
+      it 'accepts array of :queue options' do
+        queue = ['foo,4', 'default']
+
+        obj = Guard::Sidekiq.new [], :queue => queue
+        obj.send(:cmd).should include "--queue #{queue.first} --queue #{queue.last}"
+      end
     end
 
     it 'should accept :timeout option' do
