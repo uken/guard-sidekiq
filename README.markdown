@@ -93,3 +93,10 @@ Pitr Vernigorov
 [David Parry](https://github.com/suranyami)
 
 Replaces "rescue" with "sidekiq"
+
+## Copyright
+
+* Copyright
+  * Copyright 2013 Uken Games
+* License
+  * Apache License, Version 2.0
