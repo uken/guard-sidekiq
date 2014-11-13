@@ -1,3 +1,7 @@
+## 0.1.0
+
+* Support guard v2
+
 ## 0.0.11
 
 * Can now specify a `:logfile` option.
