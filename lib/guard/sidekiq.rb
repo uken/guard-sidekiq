@@ -1,9 +1,8 @@
 require 'guard'
-require 'guard/guard'
 require 'timeout'
 
 module Guard
-  class Sidekiq < Guard
+  class Sidekiq < Plugin
 
     DEFAULT_SIGNAL = :TERM
     DEFAULT_CONCURRENCY = 1
@@ -18,7 +17,7 @@ module Guard
     #  - :stop_signal e.g. :TERM, :QUIT or :SIGQUIT
     #  - :logfile e.g. log/sidekiq.log (defaults to STDOUT)
     #  - :require e.g. ./sidekiq_helper.rb
-    def initialize(watchers = [], options = {})
+    def initialize(options = {})
       @options = options
       @pid = nil
       @stop_signal = options[:stop_signal] || DEFAULT_SIGNAL
