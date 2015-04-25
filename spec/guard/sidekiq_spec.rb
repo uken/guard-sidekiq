@@ -1,6 +1,7 @@
 require 'spec_helper'
+require 'guard/compat/test/helper'
 
-describe Guard::Sidekiq do
+describe Guard::Sidekiq, exclude_stubs: [Guard::Plugin] do
   describe 'start' do
 
     it 'accepts :environment option' do

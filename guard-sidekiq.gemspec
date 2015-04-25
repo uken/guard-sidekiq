@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{Guard::Sidekiq automatically starts/stops/restarts sidekiq worker}
 
   s.add_dependency 'guard', '>= 2'
+  s.add_dependency('guard-compat', '~> 1.0')
   s.add_dependency 'sidekiq'
 
   s.add_development_dependency 'bundler'

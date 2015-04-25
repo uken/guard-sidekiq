@@ -1,4 +1,4 @@
-require 'guard'
+require 'guard/compat/plugin'
 require 'timeout'
 
 module Guard
@@ -28,8 +28,8 @@ module Guard
 
     def start
       stop
-      UI.info 'Starting up sidekiq...'
-      UI.info cmd
+      Guard::Compat::UI.info 'Starting up sidekiq...'
+      Guard::Compat::UI.info cmd
 
       # launch Sidekiq worker
       @pid = spawn({}, cmd)
@@ -37,28 +37,28 @@ module Guard
 
     def stop
       if @pid
-        UI.info 'Stopping sidekiq...'
+        Guard::Compat::UI.info 'Stopping sidekiq...'
         ::Process.kill @stop_signal, @pid
         begin
           Timeout.timeout(15) do
             ::Process.wait @pid
           end
         rescue Timeout::Error
-          UI.info 'Sending SIGKILL to sidekiq, as it\'s taking too long to shutdown.'
+          Guard::Compat::UI.info 'Sending SIGKILL to sidekiq, as it\'s taking too long to shutdown.'
           ::Process.kill :KILL, @pid
           ::Process.wait @pid
         end
-        UI.info 'Stopped process sidekiq'
+        Guard::Compat::UI.info 'Stopped process sidekiq'
       end
     rescue Errno::ESRCH
-      UI.info 'Guard::Sidekiq lost the Sidekiq worker subprocess!'
+      Guard::Compat::UI.info 'Guard::Sidekiq lost the Sidekiq worker subprocess!'
     ensure
       @pid = nil
     end
 
     # Called on Ctrl-Z signal
     def reload
-      UI.info 'Restarting sidekiq...'
+      Guard::Compat::UI.info 'Restarting sidekiq...'
       restart
     end
 
