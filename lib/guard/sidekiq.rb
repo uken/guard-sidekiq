@@ -5,7 +5,6 @@ module Guard
   class Sidekiq < Plugin
 
     DEFAULT_SIGNAL = :TERM
-    DEFAULT_CONCURRENCY = 1
 
     # Allowable options are:
     #  - :environment  e.g. 'test'
@@ -21,7 +20,6 @@ module Guard
       @options = options
       @pid = nil
       @stop_signal = options[:stop_signal] || DEFAULT_SIGNAL
-      @options[:concurrency] ||= DEFAULT_CONCURRENCY
       @options[:verbose] = @options.fetch(:verbose, true)
       super
     end
@@ -95,7 +93,7 @@ module Guard
       command << "--environment #{@options[:environment]}"  if @options[:environment]
       command << "--timeout #{@options[:timeout]}"          if @options[:timeout]
       command << "--require #{@options[:require]}"          if @options[:require]
-      command << "--concurrency #{@options[:concurrency]}"
+      command << "--concurrency #{@options[:concurrency]}"  if @options[:concurrency]
 
       command.join(' ')
     end
