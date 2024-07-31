@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://github.com/uken/guard-sidekiq'
   s.summary     = %q{guard gem for sidekiq}
   s.description = %q{Guard::Sidekiq automatically starts/stops/restarts sidekiq worker}
+  s.licenses    = ["Apache 2.0"]
 
   s.add_dependency 'guard', '>= 2'
   s.add_dependency('guard-compat', '~> 1.0')
